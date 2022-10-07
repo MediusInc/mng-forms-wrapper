@@ -1,0 +1,1692 @@
+{
+    "swagger" : "2.0",
+    "info" : {
+        "title" : "SI-CKS API",
+        "license" : {
+            "name" : "Dokumentacija",
+            "url" : "../docs"
+        }
+    },
+    "basePath" : "/si-cks-ws",
+    "tags" : [ {
+        "name" : "category",
+        "description" : "Iskanje category"
+    }, {
+        "name" : "CRUD Agent",
+        "description" : "CRUD Agent"
+    }, {
+        "name" : "CRUD Business Event",
+        "description" : "CRUD Business Event"
+    }, {
+        "name" : "CRUD Classification",
+        "description" : "CRUD Classification"
+    }, {
+        "name" : "CRUD Life Event",
+        "description" : "CRUD Life Event"
+    }, {
+        "name" : "CRUD Public Organization",
+        "description" : "CRUD Public Organization"
+    }, {
+        "name" : "CRUD Public Service",
+        "description" : "CRUD Public Service"
+    }, {
+        "name" : "CRUD Step",
+        "description" : "CRUD Step"
+    }, {
+        "name" : "search",
+        "description" : "Iskanje storitev"
+    }, {
+        "name" : "users",
+        "description" : "Users api"
+    } ],
+    "schemes" : [ "https" ],
+    "paths" : {
+        "/v1/category/all-business-events" : {
+            "get" : {
+                "tags" : [ "category" ],
+                "summary" : "Get all business events",
+                "description" : "",
+                "operationId" : "getAllBusinessEventsCategory",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "name" : "intent",
+                    "in" : "query",
+                    "description" : "Namen iskanja",
+                    "required" : true,
+                    "type" : "string"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "successful operation",
+                        "schema" : {
+                            "type" : "array",
+                            "items" : {
+                                "$ref" : "#/definitions/BusinessEventDto"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/category/all-life-events" : {
+            "get" : {
+                "tags" : [ "category" ],
+                "summary" : "Get all life events",
+                "description" : "",
+                "operationId" : "getAllLifeEventsCategory",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "name" : "intent",
+                    "in" : "query",
+                    "description" : "Namen iskanja",
+                    "required" : true,
+                    "type" : "string"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "successful operation",
+                        "schema" : {
+                            "type" : "array",
+                            "items" : {
+                                "$ref" : "#/definitions/LifeEventDto"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/category/all-agents" : {
+            "get" : {
+                "tags" : [ "category" ],
+                "summary" : "Get all agents",
+                "description" : "",
+                "operationId" : "getAllAgentsCategory",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "name" : "intent",
+                    "in" : "query",
+                    "description" : "Namen iskanja",
+                    "required" : true,
+                    "type" : "string"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "successful operation",
+                        "schema" : {
+                            "type" : "array",
+                            "items" : {
+                                "$ref" : "#/definitions/AgentDto"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/crud/agent/get-all" : {
+            "post" : {
+                "tags" : [ "CRUD Agent" ],
+                "summary" : "Get all agents",
+                "description" : "",
+                "operationId" : "getAllAgents",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/QueryParamDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Agents",
+                        "schema" : {
+                            "$ref" : "#/definitions/AgentQueryResult"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/business-event/get-all" : {
+            "post" : {
+                "tags" : [ "CRUD Business Event" ],
+                "summary" : "Get all business events",
+                "description" : "",
+                "operationId" : "getAllBusinessEvents",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/QueryParamDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Business events",
+                        "schema" : {
+                            "$ref" : "#/definitions/BusinessEventQueryResult"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/business-event" : {
+            "post" : {
+                "tags" : [ "CRUD Business Event" ],
+                "summary" : "Create business event",
+                "description" : "",
+                "operationId" : "addBusinessEvent",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/BusinessEventDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Created business event",
+                        "schema" : {
+                            "$ref" : "#/definitions/BusinessEventDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            },
+            "put" : {
+                "tags" : [ "CRUD Business Event" ],
+                "summary" : "Edit business event",
+                "description" : "",
+                "operationId" : "editBusinessEvent",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/BusinessEventDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Updated business event",
+                        "schema" : {
+                            "$ref" : "#/definitions/BusinessEventDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/business-event/{code}" : {
+            "get" : {
+                "tags" : [ "CRUD Business Event" ],
+                "summary" : "Read business event",
+                "description" : "",
+                "operationId" : "getBusinessEvent",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "code",
+                    "in" : "path",
+                    "required" : true,
+                    "type" : "string"
+                }, {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Business event",
+                        "schema" : {
+                            "$ref" : "#/definitions/BusinessEventDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/classification/get-all" : {
+            "post" : {
+                "tags" : [ "CRUD Classification" ],
+                "summary" : "Get all classifications",
+                "description" : "",
+                "operationId" : "getAllClassifications",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/QueryParamDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Classifications",
+                        "schema" : {
+                            "$ref" : "#/definitions/ClassificationQueryResult"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/life-event" : {
+            "post" : {
+                "tags" : [ "CRUD Life Event" ],
+                "summary" : "Create life event",
+                "description" : "",
+                "operationId" : "addLifeEvent",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/LifeEventDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Created life event",
+                        "schema" : {
+                            "$ref" : "#/definitions/LifeEventDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            },
+            "put" : {
+                "tags" : [ "CRUD Life Event" ],
+                "summary" : "Edit life event",
+                "description" : "",
+                "operationId" : "editLifeEvent",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/LifeEventDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Updated life event",
+                        "schema" : {
+                            "$ref" : "#/definitions/LifeEventDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/life-event/{code}" : {
+            "get" : {
+                "tags" : [ "CRUD Life Event" ],
+                "summary" : "Read life event",
+                "description" : "",
+                "operationId" : "getLifeEvent",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "code",
+                    "in" : "path",
+                    "required" : true,
+                    "type" : "string"
+                }, {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Life event",
+                        "schema" : {
+                            "$ref" : "#/definitions/LifeEventDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/life-event/get-all" : {
+            "post" : {
+                "tags" : [ "CRUD Life Event" ],
+                "summary" : "Get all life events",
+                "description" : "",
+                "operationId" : "getAllLifeEvents",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/QueryParamDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Life events",
+                        "schema" : {
+                            "$ref" : "#/definitions/LifeEventQueryResult"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/public-organization/get-all" : {
+            "post" : {
+                "tags" : [ "CRUD Public Organization" ],
+                "summary" : "Get all public organizations",
+                "description" : "",
+                "operationId" : "getAllPublicOrganizations",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/QueryParamDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Public organizations",
+                        "schema" : {
+                            "$ref" : "#/definitions/PublicOrganizationQueryResult"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/public-organization" : {
+            "post" : {
+                "tags" : [ "CRUD Public Organization" ],
+                "summary" : "Create public organization",
+                "description" : "",
+                "operationId" : "addPublicOrganization",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/PublicOrganizationDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Created public organization",
+                        "schema" : {
+                            "$ref" : "#/definitions/PublicOrganizationDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            },
+            "put" : {
+                "tags" : [ "CRUD Public Organization" ],
+                "summary" : "Edit public organization",
+                "description" : "",
+                "operationId" : "editPublicOrganization",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/PublicOrganizationDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Updated public organization",
+                        "schema" : {
+                            "$ref" : "#/definitions/PublicOrganizationDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/public-organization/{taxId}" : {
+            "get" : {
+                "tags" : [ "CRUD Public Organization" ],
+                "summary" : "Read public organization",
+                "description" : "",
+                "operationId" : "getPublicOrganization",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "taxId",
+                    "in" : "path",
+                    "required" : true,
+                    "type" : "string"
+                }, {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Public organization",
+                        "schema" : {
+                            "$ref" : "#/definitions/PublicOrganizationDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/public-service/{code}" : {
+            "get" : {
+                "tags" : [ "CRUD Public Service" ],
+                "summary" : "Read public service",
+                "description" : "",
+                "operationId" : "getPublicService",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "name" : "code",
+                    "in" : "path",
+                    "required" : true,
+                    "type" : "string"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Public service",
+                        "schema" : {
+                            "$ref" : "#/definitions/PublicServiceDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/public-service/get-all" : {
+            "post" : {
+                "tags" : [ "CRUD Public Service" ],
+                "summary" : "Get all public services",
+                "description" : "",
+                "operationId" : "getAllPublicServices",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/QueryParamDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Public services",
+                        "schema" : {
+                            "$ref" : "#/definitions/PublicServiceQueryResult"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/public-service" : {
+            "post" : {
+                "tags" : [ "CRUD Public Service" ],
+                "summary" : "Create public service",
+                "description" : "",
+                "operationId" : "addPublicService",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/PublicServiceDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Created public service",
+                        "schema" : {
+                            "$ref" : "#/definitions/PublicServiceDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            },
+            "put" : {
+                "tags" : [ "CRUD Public Service" ],
+                "summary" : "Update public service",
+                "description" : "",
+                "operationId" : "updatePublicService",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/PublicServiceDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Updated public service",
+                        "schema" : {
+                            "$ref" : "#/definitions/PublicServiceDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            },
+            "delete" : {
+                "tags" : [ "CRUD Public Service" ],
+                "summary" : "Delete public service",
+                "description" : "",
+                "operationId" : "deletePublicService",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/PublicServiceDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Deleted public service",
+                        "schema" : {
+                            "$ref" : "#/definitions/PublicServiceDto"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/crud/public-service/get-id" : {
+            "get" : {
+                "tags" : [ "CRUD Public Service" ],
+                "summary" : "Get ServiceCode by ParticipationCode and AgentCode",
+                "description" : "",
+                "operationId" : "getServiceCodeByParticipationCodeAndAgentCode",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "name" : "participationCode",
+                    "in" : "query",
+                    "required" : false,
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    },
+                    "collectionFormat" : "multi"
+                }, {
+                    "name" : "agentCode",
+                    "in" : "query",
+                    "required" : false,
+                    "type" : "string"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Filtered service codes",
+                        "schema" : {
+                            "type" : "array",
+                            "items" : {
+                                "type" : "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/crud/public-service/filter-out-agent-own-public-service-codes" : {
+            "get" : {
+                "tags" : [ "CRUD Public Service" ],
+                "summary" : "Return filtered list of service codes, by agentCode",
+                "description" : "",
+                "operationId" : "filterOutAgentOwnPublicServiceCodes",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "publicServiceCodes",
+                    "in" : "query",
+                    "required" : false,
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    },
+                    "collectionFormat" : "multi"
+                }, {
+                    "name" : "agentCode",
+                    "in" : "query",
+                    "required" : false,
+                    "type" : "string"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Filtered public services",
+                        "schema" : {
+                            "type" : "array",
+                            "items" : {
+                                "type" : "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/crud/step/get-all" : {
+            "post" : {
+                "tags" : [ "CRUD Step" ],
+                "summary" : "Get all steps",
+                "description" : "",
+                "operationId" : "getAllSteps",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "in" : "body",
+                    "name" : "body",
+                    "required" : false,
+                    "schema" : {
+                        "$ref" : "#/definitions/QueryParamDto"
+                    }
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "Steps",
+                        "schema" : {
+                            "$ref" : "#/definitions/StepQueryResult"
+                        }
+                    },
+                    "404" : {
+                        "description" : "Not found"
+                    },
+                    "409" : {
+                        "description" : "Conflict"
+                    },
+                    "500" : {
+                        "description" : "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/v1/search" : {
+            "get" : {
+                "tags" : [ "search" ],
+                "summary" : "Iskanje storitev",
+                "description" : "Servis na podlagi vnosa searchQuery vrne seznam... ",
+                "operationId" : "search",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ {
+                    "name" : "Accept-Language",
+                    "in" : "header",
+                    "description" : "Jezik",
+                    "required" : false,
+                    "type" : "string",
+                    "default" : "sl"
+                }, {
+                    "name" : "q",
+                    "in" : "query",
+                    "description" : "Splošni iskalni parameter",
+                    "required" : false,
+                    "type" : "string"
+                }, {
+                    "name" : "qbe",
+                    "in" : "query",
+                    "description" : "Limit search to business event",
+                    "required" : false,
+                    "type" : "string"
+                }, {
+                    "name" : "qle",
+                    "in" : "query",
+                    "description" : "Limit search to life event",
+                    "required" : false,
+                    "type" : "string"
+                }, {
+                    "name" : "qsp",
+                    "in" : "query",
+                    "description" : "Limit search to service provider",
+                    "required" : false,
+                    "type" : "string"
+                }, {
+                    "name" : "qc",
+                    "in" : "query",
+                    "description" : "Limit search to concept",
+                    "required" : false,
+                    "type" : "string"
+                }, {
+                    "name" : "qco",
+                    "in" : "query",
+                    "description" : "Limit search to public service codes",
+                    "required" : false,
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    },
+                    "collectionFormat" : "multi"
+                }, {
+                    "name" : "intent",
+                    "in" : "query",
+                    "description" : "Namen iskanja",
+                    "required" : true,
+                    "type" : "string"
+                } ],
+                "responses" : {
+                    "200" : {
+                        "description" : "successful operation",
+                        "schema" : {
+                            "type" : "array",
+                            "items" : {
+                                "$ref" : "#/definitions/SearchResponseDto"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/users/current" : {
+            "get" : {
+                "tags" : [ "users" ],
+                "summary" : "Current user",
+                "description" : "Returns logged in user",
+                "operationId" : "Current user",
+                "consumes" : [ "application/json" ],
+                "produces" : [ "application/json" ],
+                "parameters" : [ ],
+                "responses" : {
+                    "200" : {
+                        "description" : "successful operation",
+                        "schema" : {
+                            "$ref" : "#/definitions/UserDto"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions" : {
+        "BusinessEventDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "title" : {
+                    "type" : "string"
+                },
+                "description" : {
+                    "type" : "string"
+                }
+            }
+        },
+        "LifeEventDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "title" : {
+                    "type" : "string"
+                },
+                "description" : {
+                    "type" : "string"
+                }
+            }
+        },
+        "AgentDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "title" : {
+                    "type" : "string"
+                }
+            }
+        },
+        "AgentQueryResult" : {
+            "type" : "object",
+            "properties" : {
+                "pageData" : {
+                    "type" : "array",
+                    "items" : {
+                        "$ref" : "#/definitions/AgentDto"
+                    }
+                },
+                "allDataCount" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "selectInTwoSteps" : {
+                    "type" : "boolean"
+                }
+            }
+        },
+        "FilterParamDto" : {
+            "type" : "object",
+            "properties" : {
+                "property" : {
+                    "type" : "string"
+                },
+                "filter_value" : {
+                    "type" : "object"
+                },
+                "filter_value_to" : {
+                    "type" : "object"
+                },
+                "filter_match_type" : {
+                    "type" : "string",
+                    "enum" : [ "EQUALS", "NOT_EQUALS", "FROM_TO", "CONTAINS", "STARTS_WITH", "ENDS_WITH", "IN", "NOT_IN", "SMALLER_THEN", "GREATER_THEN" ]
+                },
+                "filter_match_case_sensitive" : {
+                    "type" : "boolean"
+                }
+            }
+        },
+        "QueryParamDto" : {
+            "type" : "object",
+            "required" : [ "items_offset", "items_per_page" ],
+            "properties" : {
+                "sort_property" : {
+                    "type" : "array",
+                    "description" : "Array of ... ",
+                    "items" : {
+                        "type" : "string"
+                    }
+                },
+                "sort_asc" : {
+                    "type" : "array",
+                    "description" : "Array of ... ",
+                    "items" : {
+                        "type" : "boolean"
+                    }
+                },
+                "items_offset" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "minimum" : 0
+                },
+                "items_per_page" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "minimum" : 1,
+                    "maximum" : 500
+                },
+                "filter_params" : {
+                    "type" : "array",
+                    "description" : "Array of ... ",
+                    "items" : {
+                        "$ref" : "#/definitions/FilterParamDto"
+                    }
+                },
+                "filter_all_param" : {
+                    "type" : "string"
+                },
+                "filter_all_properties" : {
+                    "type" : "array",
+                    "description" : "Array of ... ",
+                    "items" : {
+                        "type" : "string"
+                    }
+                },
+                "validate_properties" : {
+                    "type" : "array",
+                    "description" : "Array of ... ",
+                    "items" : {
+                        "type" : "string"
+                    }
+                },
+                "select_in_two_steps" : {
+                    "type" : "boolean"
+                },
+                "sort_enum_by_ordinal" : {
+                    "type" : "boolean"
+                },
+                "group_by_properties" : {
+                    "type" : "array",
+                    "description" : "Array of ... ",
+                    "items" : {
+                        "type" : "string"
+                    }
+                },
+                "query_mode" : {
+                    "type" : "string",
+                    "enum" : [ "COUNT", "DATA", "ALL" ]
+                }
+            }
+        },
+        "BusinessEventQueryResult" : {
+            "type" : "object",
+            "properties" : {
+                "pageData" : {
+                    "type" : "array",
+                    "items" : {
+                        "$ref" : "#/definitions/BusinessEventDto"
+                    }
+                },
+                "allDataCount" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "selectInTwoSteps" : {
+                    "type" : "boolean"
+                }
+            }
+        },
+        "ClassificationDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "title" : {
+                    "type" : "string"
+                },
+                "description" : {
+                    "type" : "string"
+                }
+            }
+        },
+        "ClassificationQueryResult" : {
+            "type" : "object",
+            "properties" : {
+                "pageData" : {
+                    "type" : "array",
+                    "items" : {
+                        "$ref" : "#/definitions/ClassificationDto"
+                    }
+                },
+                "allDataCount" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "selectInTwoSteps" : {
+                    "type" : "boolean"
+                }
+            }
+        },
+        "LifeEventQueryResult" : {
+            "type" : "object",
+            "properties" : {
+                "pageData" : {
+                    "type" : "array",
+                    "items" : {
+                        "$ref" : "#/definitions/LifeEventDto"
+                    }
+                },
+                "allDataCount" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "selectInTwoSteps" : {
+                    "type" : "boolean"
+                }
+            }
+        },
+        "PublicOrganizationDto" : {
+            "type" : "object",
+            "properties" : {
+                "taxId" : {
+                    "type" : "string"
+                },
+                "title" : {
+                    "type" : "string"
+                },
+                "titleShort" : {
+                    "type" : "string"
+                }
+            }
+        },
+        "PublicOrganizationQueryResult" : {
+            "type" : "object",
+            "properties" : {
+                "pageData" : {
+                    "type" : "array",
+                    "items" : {
+                        "$ref" : "#/definitions/PublicOrganizationDto"
+                    }
+                },
+                "allDataCount" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "selectInTwoSteps" : {
+                    "type" : "boolean"
+                }
+            }
+        },
+        "MandateConfigurationDto" : {
+            "type" : "object",
+            "properties" : {
+                "maxValidForDays" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "mandateAllowed" : {
+                    "type" : "integer",
+                    "format" : "int32"
+                },
+                "mandateChain" : {
+                    "type" : "integer",
+                    "format" : "int32"
+                }
+            }
+        },
+        "MandateMetadataDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "name" : {
+                    "type" : "string"
+                },
+                "type" : {
+                    "type" : "string",
+                    "enum" : [ "STRING", "NUMBER", "DATE" ]
+                },
+                "description" : {
+                    "type" : "string"
+                }
+            }
+        },
+        "ParticipationDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "role" : {
+                    "type" : "string",
+                    "enum" : [ "SERVICE_PROVIDER" ]
+                },
+                "description" : {
+                    "type" : "string"
+                },
+                "url" : {
+                    "type" : "string"
+                },
+                "agent" : {
+                    "$ref" : "#/definitions/AgentDto"
+                }
+            }
+        },
+        "PublicServiceDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "title" : {
+                    "type" : "string"
+                },
+                "description" : {
+                    "type" : "string"
+                },
+                "competentAuthorities" : {
+                    "type" : "array",
+                    "uniqueItems" : true,
+                    "items" : {
+                        "$ref" : "#/definitions/ServiceChannelDto"
+                    }
+                },
+                "classification" : {
+                    "$ref" : "#/definitions/ClassificationDto"
+                },
+                "mandateMetadatas" : {
+                    "type" : "array",
+                    "uniqueItems" : true,
+                    "items" : {
+                        "$ref" : "#/definitions/MandateMetadataDto"
+                    }
+                },
+                "participations" : {
+                    "type" : "array",
+                    "uniqueItems" : true,
+                    "items" : {
+                        "$ref" : "#/definitions/ParticipationDto"
+                    }
+                },
+                "mandateConfigurations" : {
+                    "type" : "array",
+                    "uniqueItems" : true,
+                    "items" : {
+                        "$ref" : "#/definitions/MandateConfigurationDto"
+                    }
+                },
+                "businessEvents" : {
+                    "type" : "array",
+                    "uniqueItems" : true,
+                    "items" : {
+                        "$ref" : "#/definitions/BusinessEventDto"
+                    }
+                },
+                "legislator" : {
+                    "$ref" : "#/definitions/PublicOrganizationDto"
+                },
+                "steps" : {
+                    "type" : "array",
+                    "uniqueItems" : true,
+                    "items" : {
+                        "$ref" : "#/definitions/StepDto"
+                    }
+                },
+                "lifeEvents" : {
+                    "type" : "array",
+                    "uniqueItems" : true,
+                    "items" : {
+                        "$ref" : "#/definitions/LifeEventDto"
+                    }
+                }
+            }
+        },
+        "ServiceChannelDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "type" : {
+                    "type" : "string",
+                    "enum" : [ "ELEKTRONSKO", "OSEBNO", "ADD_TYPES" ]
+                },
+                "taxId" : {
+                    "type" : "string"
+                },
+                "title" : {
+                    "type" : "string"
+                },
+                "titleShort" : {
+                    "type" : "string"
+                },
+                "cost" : {
+                    "$ref" : "#/definitions/ServiceCostDto"
+                }
+            }
+        },
+        "ServiceCostDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "value" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "description" : {
+                    "type" : "string"
+                }
+            }
+        },
+        "StepDto" : {
+            "type" : "object",
+            "properties" : {
+                "code" : {
+                    "type" : "string"
+                },
+                "title" : {
+                    "type" : "string"
+                }
+            }
+        },
+        "PublicServiceQueryResult" : {
+            "type" : "object",
+            "properties" : {
+                "pageData" : {
+                    "type" : "array",
+                    "items" : {
+                        "$ref" : "#/definitions/PublicServiceDto"
+                    }
+                },
+                "allDataCount" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "selectInTwoSteps" : {
+                    "type" : "boolean"
+                }
+            }
+        },
+        "StepQueryResult" : {
+            "type" : "object",
+            "properties" : {
+                "pageData" : {
+                    "type" : "array",
+                    "items" : {
+                        "$ref" : "#/definitions/StepDto"
+                    }
+                },
+                "allDataCount" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "selectInTwoSteps" : {
+                    "type" : "boolean"
+                }
+            }
+        },
+        "SearchResponseDto" : {
+            "type" : "object",
+            "properties" : {
+                "powersTypeEnum" : {
+                    "type" : "string",
+                    "enum" : [ "FULL_POWER", "UNCATEGORIZED", "FIELD", "EVENT", "PROCEDURE", "SERVICE", "STEP" ]
+                },
+                "code" : {
+                    "type" : "string"
+                },
+                "title" : {
+                    "type" : "string"
+                },
+                "description" : {
+                    "type" : "string"
+                },
+                "lifeEvents" : {
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    }
+                },
+                "businessEvents" : {
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    }
+                },
+                "providers" : {
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    }
+                },
+                "concept" : {
+                    "type" : "string"
+                },
+                "steps" : {
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    }
+                },
+                "maxDurationDays" : {
+                    "type" : "integer",
+                    "format" : "int64"
+                },
+                "metadatas" : {
+                    "type" : "object",
+                    "additionalProperties" : {
+                        "type" : "string"
+                    }
+                },
+                "urls" : {
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    }
+                }
+            }
+        },
+        "UserDto" : {
+            "type" : "object",
+            "properties" : {
+                "name" : {
+                    "type" : "string"
+                },
+                "roles" : {
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    }
+                },
+                "agent" : {
+                    "type" : "string"
+                },
+                "organisations" : {
+                    "type" : "array",
+                    "items" : {
+                        "type" : "string"
+                    }
+                }
+            }
+        }
+    }
+}

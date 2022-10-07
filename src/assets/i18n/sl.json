@@ -1,0 +1,28 @@
+{
+    "app": {
+        "name": "MNG-Commons Starter",
+        "owner": "Medius"
+    },
+    "pages": {
+        "home": {
+            "title": "Domov",
+            "subtitle": "Dobrodošli na domači strani MNG-Commons Starter"
+        },
+        "error": {
+            "title": "Napaka",
+            "subtitle": "Nekaj je šlo narobe!"
+        },
+        "notFound": {
+            "title": "404",
+            "subtitle": "Brez zadetkov",
+            "message": "Stran, ki jo iščete ne obstaja"
+        },
+        "lazy": {
+            "title": "Lenoben modul",
+            "home": {
+                "title":"Lenobni domov",
+                "subtitle": "Dobrodošli na lenobni domači strani MNG-Commons Starter"
+            }
+        }
+    }
+}

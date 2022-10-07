@@ -1,0 +1,16 @@
+{
+    "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+    "spaces": 2,
+    "generator-cli": {
+        "version": "5.4.0",
+        "generators": {
+            "api": {
+                "generatorName": "typescript-node",
+                "output": "src/app/core/api/model",
+                "glob": "doc/spec/openapi.json",
+                "templateDir": "node_modules/@mediusinc/mng-commons/openapi/templates",
+                "modelPackage": "generated-sources"
+            }
+        }
+    }
+}

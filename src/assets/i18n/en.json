@@ -1,0 +1,28 @@
+{
+    "app": {
+        "name": "MNG-Commons Starter",
+        "owner": "Medius"
+    },
+    "pages": {
+        "home": {
+            "title": "Home",
+            "subtitle": "Welcome to MNG-Commons Starter Home Page"
+        },
+        "error": {
+            "title": "Error",
+            "subtitle": "Something went wrong!"
+        },
+        "notFound": {
+            "title": "404",
+            "subtitle": "Brez zadetkov",
+            "message": "Page does not exist"
+        },
+        "lazy": {
+            "title": "Lazy module",
+            "home": {
+                "title":"Lazy home",
+                "subtitle": "Welcome to Lazy MNG-Commons Starter Home Page"
+            }
+        }
+    }
+}

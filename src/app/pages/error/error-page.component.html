@@ -1,0 +1,11 @@
+<div class="exception-body error">
+    <div class="exception-panel">
+        <h1>{{ 'pages.error.title' | translate }}</h1>
+        <h3>{{ 'pages.error.subtitle' | translate }}</h3>
+        <p-button type="button" pButton [label]="'general.returnHome' | translate" [routerLink]="['/']"></p-button>
+    </div>
+    <div class="exception-footer">
+        <img [src]="mngCommons.colorSchemeIsLight ? mngCommons.appLogoDark : mngCommons.appLogoLight" class="exception-logo" />
+        <img [src]="mngCommons.colorSchemeIsLight ? mngCommons.appLogoNameDark : mngCommons.appLogoNameLight" class="exception-appname" />
+    </div>
+</div>

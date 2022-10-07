@@ -1,0 +1,12 @@
+<div class="exception-body notfound">
+    <div class="exception-panel">
+        <h1>{{ 'pages.notFound.title' | translate }}</h1>
+        <h3>{{ 'pages.notFound.subtitle' | translate }}</h3>
+        <p>{{ 'pages.notFound.message' | translate }}</p>
+        <p-button type="button" pButton [label]="'general.returnHome' | translate" [routerLink]="['/']"></p-button>
+    </div>
+    <div class="exception-footer">
+        <img [src]="mngCommons.colorSchemeIsLight ? mngCommons.appLogoDark : mngCommons.appLogoLight" class="exception-logo" />
+        <img [src]="mngCommons.colorSchemeIsLight ? mngCommons.appLogoNameDark : mngCommons.appLogoNameLight" class="exception-appname" />
+    </div>
+</div>

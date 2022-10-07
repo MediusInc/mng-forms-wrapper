@@ -1,0 +1,7 @@
+{
+    "/forms/*": {
+        "target": "http://ts-forms-front-sb1.apps.ocp-test.ts.telekom.si",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

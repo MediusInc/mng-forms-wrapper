@@ -1,6 +1,5 @@
 # Embedding Forms into Angular
 
-Development setup in
 ![mgn-forms-embed](mgn-forms-embed.png)
 
 _Step 1: index.html_  

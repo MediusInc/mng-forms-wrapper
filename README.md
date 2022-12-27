@@ -24,7 +24,7 @@ vaadin.initApplication("forms", {
     "browserDetailsUrl": "forms/app?embedded=true",
     "serviceUrl": "/forms/app",
     "widgetset": "com.vaadin.DefaultWidgetSet",
-    "theme": "valo-littea-process-cyan",
+    "theme": "valo-littea-tip",
     "versionInfo": {"vaadinVersion": "7.7.17"},
     "vaadinDir": "forms/VAADIN/",
     "heartbeatInterval": 15,

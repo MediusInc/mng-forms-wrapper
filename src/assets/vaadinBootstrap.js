@@ -51,20 +51,6 @@
 			return;
 		}
 		log("load widgetset", url, widgetset);
-		setTimeout(function() {
-			if (!isWidgetsetLoaded(widgetset)) {
-				if (ready) {
-					alert("Failed to load the widgetset: " + url);
-				} else {
-					if (window.confirm("Failed to load the widgetset. If using CDN for the widgetset, it is possible that compiling it takes up to a few minutes. Would you like to try again?")) {
-						window[widgetset] = undefined;
-						window.location.reload(false);
-					} else {
-						alert("Failed to load the widgetset: " + url);
-					}
-				}
-			}
-		}, 15000);
 
 		var scriptTag = document.createElement('script');
 		scriptTag.setAttribute('type', 'text/javascript');
@@ -377,33 +363,33 @@
 })();
 
 
-if (!window.vaadin)
-    alert("Failed to load the bootstrap JavaScript");
-
-/* The UI Configuration */
-vaadin.initApplication("forms", {
-    "browserDetailsUrl": "forms/app?embedded=true",
-    "serviceUrl": "/forms/app",
-    "widgetset": "com.vaadin.DefaultWidgetSet",
-    "theme": "valo-littea-process-cyan",
-    "versionInfo": {"vaadinVersion": "7.7.17"},
-    "vaadinDir": "forms/VAADIN/",
-    "heartbeatInterval": 15,
-    "debug": false,
-    "standalone": false,
-    "authErrMsg": {
-        "message": "Zapišite si vse neshranjene podatke " +
-            "za nadaljevanje <u>kliknite tukaj<\/u>.",
-        "caption": "Napaka pri avtentikaciji"
-    },
-    "comErrMsg": {
-        "message": "Zapišite si vse neshranjene podatke " +
-            "za nadaljevanje <u>kliknite tukaj<\/u>.",
-        "caption": "Napaka pri povezavi"
-    },
-    "sessExpMsg": {
-        "message": "Zapišite si vse neshranjene podatke " +
-            "za nadaljevanje <u>kliknite tukaj<\/u>.",
-        "caption": "Seja je potekla"
-    }
-});//]] >
+if (window.vaadin)
+{
+    vaadin.initApplication("forms", {
+        "browserDetailsUrl": "forms/app?embedded=true",
+        "serviceUrl": "/forms/app",
+        "widgetset": "com.vaadin.DefaultWidgetSet",
+        "theme": "valo-littea-tip",
+        "versionInfo": {"vaadinVersion": "7.7.17"},
+        "vaadinDir": "forms/VAADIN/",
+        "heartbeatInterval": 15,
+        "debug": false,
+        "standalone": false,
+        "authErrMsg": {
+            "message": "Zapišite si vse neshranjene podatke " +
+                "za nadaljevanje <u>kliknite tukaj<\/u>.",
+            "caption": "Napaka pri avtentikaciji"
+        },
+        "comErrMsg": {
+            "message": "Zapišite si vse neshranjene podatke " +
+                "za nadaljevanje <u>kliknite tukaj<\/u>.",
+            "caption": "Napaka pri povezavi"
+        },
+        "sessExpMsg": {
+            "message": "Zapišite si vse neshranjene podatke " +
+                "za nadaljevanje <u>kliknite tukaj<\/u>.",
+            "caption": "Seja je potekla"
+        }
+    });
+}
+//]] >

@@ -10,7 +10,7 @@ Add CSS import statement into `<head>` tag.
 ```
 
 _Step 2: assets_  
-Download file http://ts-forms-front-sbm1.apps.ostest1.int.medius.si/forms/VAADIN/vaadinBootstrap.js  
+Download file [vaadinBootstrap.js](src/assets/vaadinBootstrap.js)  
 to angular `src/assets` directory
 
 _Step 3: vaadinBootstrap.js_  

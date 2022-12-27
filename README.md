@@ -6,7 +6,7 @@ _Step 1: index.html_
 Add CSS import statement into `<head>` tag.
 
 ```html
-<link rel="stylesheet" type="text/css" href="http://ts-forms-front-sb1.apps.ocp-test.ts.telekom.si/forms/VAADIN/themes/valo-littea-process-cyan/compiled-valo-littea-process-cyan.css?v=1.0.120">
+<link rel="stylesheet" type="text/css" href="http://ts-forms-front-sb1.apps.ocp-test.ts.telekom.si/forms/VAADIN/themes/valo-littea-tip/compiled-valo-littea-tip.css?v=1.0.120">
 ```
 
 _Step 2: assets_  

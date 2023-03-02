@@ -7,6 +7,7 @@ import {routesBuilder as lazyRoutesBuilder} from './modules/lazy/lazy.routing.mo
 import {ErrorPageComponent} from './pages/error/error-page.component';
 import {HomePageComponent} from './pages/home/home-page.component';
 import {NotFoundPageComponent} from './pages/not-found/not-found-page.component';
+import {RedirectPageComponent} from './pages/redirect/redirect.page.component';
 
 export const routesBuilder: RoutesBuilder = RoutesBuilder.create()
     .addRouteBuilder(
@@ -20,6 +21,7 @@ export const routesBuilder: RoutesBuilder = RoutesBuilder.create()
             )
     )
     .addRouteBuilder(RouteBuilder.create('error', ErrorPageComponent))
+    .addRouteBuilder(RouteBuilder.create('redirect', RedirectPageComponent))
     .addRouteBuilder(RouteBuilder.create('not-found', NotFoundPageComponent))
     .addRouteRedirect('**', '/not-found');
 

@@ -34,6 +34,7 @@ export class HomePageComponent implements AfterViewInit {
             this.formsAuthIframeEl.setAttribute('height', '0');
             this.formsAuthIframeEl.setAttribute('frameborder', '0');
             this.formsAuthIframeEl.setAttribute('style', 'position: absolute; width: 0px; height: 0px; border: none; left: -1000px; top: -1000px;');
+            this.formsAuthIframeEl.setAttribute('sandbox', 'allow-same-origin');
 
             fromEvent(this.formsAuthIframeEl, 'load').pipe(first()).subscribe(() => {
                 // listen to load event and start checking content

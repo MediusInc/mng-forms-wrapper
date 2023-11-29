@@ -1,4 +1,5 @@
 import {AfterViewInit, Component} from '@angular/core';
+
 import {first, fromEvent} from 'rxjs';
 
 @Component({
@@ -6,7 +7,7 @@ import {first, fromEvent} from 'rxjs';
     templateUrl: './home-page.component.html'
 })
 export class HomePageComponent implements AfterViewInit {
-
+    private readonly formsAuthIframeCheckIntervalExecMax = 50;
     private readonly formsAuthIframeId = 'formsAuthIframe';
     private readonly formsAuthIframeSrc = '/forms/forms-ping'; // this one should be configurable
     private formsAuthIframeCheckInterval?: number;
@@ -36,10 +37,13 @@ export class HomePageComponent implements AfterViewInit {
             this.formsAuthIframeEl.setAttribute('style', 'position: absolute; width: 0px; height: 0px; border: none; left: -1000px; top: -1000px;');
             this.formsAuthIframeEl.setAttribute('sandbox', 'allow-same-origin');
 
-            fromEvent(this.formsAuthIframeEl, 'load').pipe(first()).subscribe(() => {
-                // listen to load event and start checking content
-                this.checkFormsAuthIframeContent();
-            });
+            fromEvent(this.formsAuthIframeEl, 'load')
+                .pipe(first())
+                .subscribe(() => {
+                    // listen to load event and start checking content
+                    console.debug('Forms Auth iFrame loaded, checking auth.');
+                    this.checkFormsAuthIframeContent();
+                });
 
             // append to body
             document.body.appendChild(this.formsAuthIframeEl);
@@ -58,6 +62,9 @@ export class HomePageComponent implements AfterViewInit {
     private checkFormsAuthIframeContent() {
         this.stopFormsAuthCheckInterval();
         this.formsAuthIframeCheckInterval = window.setInterval(() => {
+            this.formsAuthIframeCheckIntervalExecCnt++;
+            console.debug(`Executing ${this.formsAuthIframeCheckIntervalExecCnt}/${this.formsAuthIframeCheckIntervalExecMax} iFrame auth checks`, new Date().getTime());
+
             try {
                 if (!this.formsAuthIframeEl) {
                     // no forms auth iframe element exists, stop checking
@@ -66,20 +73,32 @@ export class HomePageComponent implements AfterViewInit {
                     return;
                 }
 
-                this.formsAuthIframeCheckIntervalExecCnt++;
-                const isAuthFinished = (this.formsAuthIframeEl.contentWindow?.document.querySelector('body')?.innerText.toLowerCase().indexOf('pong') ?? -1) >= 0;
+                let isAuthFinished = false;
+
+                // uncomment for testing purposes:
+                // throw new Error('Blocked a frame with origin "..." from accessing a cross-origin frame.');
+
+                if (!this.formsAuthIframeEl.contentWindow?.document) {
+                    // document possibly not yet available, log it, try again later
+                    console.debug('Auth iFrame contentWindow document not defined', this.formsAuthIframeEl.contentWindow?.document);
+                } else {
+                    isAuthFinished = (this.formsAuthIframeEl.contentWindow.document.body?.innerText?.toLowerCase()?.indexOf('pong') ?? -1) >= 0;
+
+                    console.debug(`Auth iFrame contentWindow document is present with body inner text`, this.formsAuthIframeEl.contentWindow.document.body?.innerText);
+                }
 
                 if (isAuthFinished) {
                     // if right content is found init the vaadin app and stop timer
                     this.stopFormsAuthCheckInterval();
                     this.initVaadinApplication();
-                } else if (this.formsAuthIframeCheckIntervalExecCnt > 100) {
-                    // number of max executions is passed, stop trying
-                    this.stopFormsAuthCheckInterval();
                 }
             } catch (e) {
-                // iframe cannot be accessed, stop trying
-                console.warn('Cannot access iframe content', e);
+                // some kind of error occurred while trying to scan iframe content, log it
+                console.warn('Cannot access iframe content, continue trying', e);
+            }
+
+            if (this.formsAuthIframeCheckIntervalExecCnt > this.formsAuthIframeCheckIntervalExecMax) {
+                // number of max executions is passed, stop trying
                 this.stopFormsAuthCheckInterval();
             }
         }, 100);
